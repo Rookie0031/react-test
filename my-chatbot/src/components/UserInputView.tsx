@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface UserInputViewProps {
   text: string;
@@ -6,6 +6,8 @@ interface UserInputViewProps {
 }
 
 const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
+  const [apiResponse, setApiResponse] = useState<string | null>(null);
+
   const handleSubmit = async () => {
     try {
       const requestBody = {
@@ -25,6 +27,7 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
 
       const data = await response.json();
       console.log('Success:', data);
+      setApiResponse(data.content);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -39,6 +42,7 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
         placeholder="Enter text here" 
       />
       <button onClick={handleSubmit}>Submit</button>
+      {apiResponse && <div>{apiResponse}</div>}
     </div>
   );
 }
