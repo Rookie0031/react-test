@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ChatHistoryView from './ChatHistroyView';
+import SearchBarView from './SearchBarView';
 import RequestDTO from '../dto/openai/requestDto';
 import ResponseDTO from '../dto/openai/responseDto';
 
@@ -45,13 +46,8 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
 
   return (
     <div>
-      <input 
-        type="text" 
-        value={text} 
-        onChange={(e) => setText(e.target.value)} 
-        placeholder="Enter text here" 
-      />
-      <button onClick={handleSubmit}>Submit</button>
+      {/* Use the SearchBarView component */}
+      <SearchBarView text={text} setText={setText} onSubmit={handleSubmit} />
 
       {/* Use the HistoryBoard component */}
       <ChatHistoryView history={history} />
