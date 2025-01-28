@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
+import ChatHistoryView from './ChatHistroyView';
 import RequestDTO from '../dto/openai/requestDto';
 import ResponseDTO from '../dto/openai/responseDto';
-interface UserInputViewProps {
-  text: string;
-  setText: (text: string) => void;
-}
 
-interface HistoryItem {
+interface UserInputViewProps {
+    text: string;
+    setText: (text: string) => void;
+  }
+
+interface ChatHistoryItem {
   question: string;
   answer: string;
 }
 
 const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
   const [apiResponse, setApiResponse] = useState<string | null>(null);
-  const [history, setHistory] = useState<HistoryItem[]>([]);
+  const [history, setHistory] = useState<ChatHistoryItem[]>([]);
 
   const handleSubmit = async () => {
     try {
@@ -55,16 +57,8 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
       <button onClick={handleSubmit}>Submit</button>
       {apiResponse && <div>{apiResponse}</div>}
 
-      {/* Render the history board */}
-      <div className="history-board">
-        {history.map((item, index) => (
-          <div key={index} className="history-item">
-            <strong>Q:</strong> {item.question}
-            <br />
-            <strong>A:</strong> {item.answer}
-          </div>
-        ))}
-      </div>
+      {/* Use the HistoryBoard component */}
+      <ChatHistoryView history={history} />
     </div>
   );
 }
