@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../css/SearchBarView.module.css';
 
 interface SearchBarViewProps {
   text: string;
@@ -8,14 +9,20 @@ interface SearchBarViewProps {
 
 const SearchBarView: React.FC<SearchBarViewProps> = ({ text, setText, onSubmit }) => {
   return (
-    <div>
+    <div className={styles.container}>
       <input 
         type="text" 
         value={text} 
         onChange={(e) => setText(e.target.value)} 
         placeholder="Enter text here" 
+        className={styles.input}
       />
-      <button onClick={onSubmit}>Submit</button>
+      <button 
+        onClick={onSubmit} 
+        className={styles.button}
+      >
+        Submit
+      </button>
     </div>
   );
 };

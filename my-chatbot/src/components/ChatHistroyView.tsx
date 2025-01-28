@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/ChatHistoryView.css'; // Import the CSS file
+import styles from '../css/ChatHistoryView.module.css'; // Import the CSS file
 
 interface ChatHistoryItem {
   question: string;
@@ -12,13 +12,13 @@ interface ChatHistoryViewProps {
 
 const ChatHistoryView: React.FC<ChatHistoryViewProps> = ({ history }) => {
   return (
-    <div className="history-board">
+    <div className={styles.historyBoard}>
       {history.map((item, index) => (
-        <div key={index} className="history-item">
+        <div key={index} className={styles.historyItem}>
           <strong>Q:</strong> {item.question}
           <br />
           <strong>A:</strong> {item.answer}
-          <hr className="divider" /> {/* Add a divider */}
+          <hr className={styles.divider} /> {/* Add a divider */}
         </div>
       ))}
     </div>
