@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import RequestDTO from '../dto/openai/requestDto';
+import ResponseDTO from '../dto/openai/responseDto';
 
 interface UserInputViewProps {
   text: string;
@@ -10,7 +12,7 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
 
   const handleSubmit = async () => {
     try {
-      const requestBody = {
+      const requestBody: RequestDTO = {
         content: text
       }
       const response = await fetch('http://localhost:8001/api/public/openai/generate', {
@@ -25,7 +27,7 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
         throw new Error('Network response was not ok');
       }
 
-      const data = await response.json();
+      const data: ResponseDTO = await response.json();
       console.log('Success:', data);
       setApiResponse(data.content);
     } catch (error) {
