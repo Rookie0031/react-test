@@ -1,0 +1,13 @@
+.history-board {
+    text-align: left; /* Align text to the left */
+  }
+  
+  .history-item {
+    margin-bottom: 10px;
+  }
+  
+  .divider {
+    border: none;
+    border-top: 1px solid #ccc; /* Style the divider */
+    margin: 10px 0;
+  }

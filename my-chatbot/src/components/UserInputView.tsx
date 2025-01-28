@@ -14,7 +14,6 @@ interface ChatHistoryItem {
 }
 
 const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
-  const [apiResponse, setApiResponse] = useState<string | null>(null);
   const [history, setHistory] = useState<ChatHistoryItem[]>([]);
 
   const handleSubmit = async () => {
@@ -36,8 +35,6 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
       }
 
       const data: ResponseDTO = await response.json();
-      console.log('Success:', data);
-      setApiResponse(data.content);
 
       // Update history with the new question and answer
       setHistory(prevHistory => [...prevHistory, { question: text, answer: data.content }]);
@@ -55,7 +52,6 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
         placeholder="Enter text here" 
       />
       <button onClick={handleSubmit}>Submit</button>
-      {apiResponse && <div>{apiResponse}</div>}
 
       {/* Use the HistoryBoard component */}
       <ChatHistoryView history={history} />
