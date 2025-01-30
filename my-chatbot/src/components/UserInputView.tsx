@@ -16,9 +16,11 @@ interface ChatHistoryItem {
 
 const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
   const [history, setHistory] = useState<ChatHistoryItem[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
     try {
+      setIsLoading(true);
       const requestBody: RequestDTO = {
         content: text
       };
@@ -41,15 +43,15 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
       setHistory(prevHistory => [...prevHistory, { question: text, answer: data.content }]);
     } catch (error) {
       console.error('Error:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div>
-      {/* Use the SearchBarView component */}
       <SearchBarView text={text} setText={setText} onSubmit={handleSubmit} />
-
-      {/* Use the HistoryBoard component */}
+      {isLoading && <div>Loading...</div>}
       <ChatHistoryView history={history} />
     </div>
   );
