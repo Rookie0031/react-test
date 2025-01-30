@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <h1>My Chatbot</h1>
+      <h1>Your Own Chatbot</h1>
         <UserInputView text={text} setText={setText} />
     </>
   )

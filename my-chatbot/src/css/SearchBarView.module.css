@@ -6,8 +6,10 @@
   background: #f5f5f5;
   border-radius: 50px;
   border: 1px solid #e0e0e0;
-  max-width: 600px;
+  width: 800px;
   margin: 0 auto;
+  height: 60px;
+  box-sizing: border-box;
 }
 
 .input {
@@ -18,17 +20,19 @@
   font-size: 16px;
   color: #1b193d;
   outline: none;
+  width: 380px;
 }
 
 .button {
   padding: 8px 16px;
   border-radius: 50px;
   border: none;
-  background-color: #1b193d;
+  background-color: #5046E4;
   color: white;
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.2s;
+  min-width: 80px;
 }
 
 .button:hover {
