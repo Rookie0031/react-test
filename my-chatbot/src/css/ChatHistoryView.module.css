@@ -1,13 +1,38 @@
 .historyBoard {
-    text-align: left; /* Align text to the left */
-  }
-  
-  .history-item {
-    margin-bottom: 10px;
-  }
-  
-  .divider {
-    border: none;
-    border-top: 1px solid #ccc; /* Style the divider */
-    margin: 10px 0;
-  }
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.messageContainer {
+  margin-bottom: 20px;
+}
+
+.questionMessage, .answerMessage {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.questionMessage {
+  justify-content: flex-start;
+}
+
+.answerMessage {
+  justify-content: flex-end;
+}
+
+.messageContent {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  word-wrap: break-word;
+}
+
+.questionMessage .messageContent {
+  background-color: #e9ecef;
+  color: #000;
+}
+
+.answerMessage .messageContent {
+  background-color: #007bff;
+  color: white;
+}

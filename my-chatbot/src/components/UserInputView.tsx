@@ -50,9 +50,9 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
 
   return (
     <div>
-      <SearchBarView text={text} setText={setText} onSubmit={handleSubmit} />
-      {isLoading && <div>Loading...</div>}
       <ChatHistoryView history={history} />
+      {isLoading && <div>Loading...</div>}
+      <SearchBarView text={text} setText={setText} onSubmit={handleSubmit} />
     </div>
   );
 }
