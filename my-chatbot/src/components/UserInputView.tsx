@@ -32,7 +32,7 @@ const UserInputView: React.FC<UserInputViewProps> = ({ text, setText }) => {
         conversationId: conversationId // 대화 ID 추가
       };
 
-      const response = await fetch('http://localhost:8001/api/public/openai/generate', {
+      const response = await fetch('http://localhost:3000/openai/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
